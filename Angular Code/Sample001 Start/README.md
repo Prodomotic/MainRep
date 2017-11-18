@@ -1,8 +1,7 @@
-1) Open a command prompt in the project's root directory (APM)
+1) Abrir la ventana de comandos en el root de este ejemplo
 
-2) Type: `npm install`
-    This installs the dependencies as defined in the package.json file.
+2) Escribir: `npm install`
+    Instala todas las dependencias contenidas en el archivo package.json.
     
-3) Type: `npm start`
-    This launches the TypeScript compiler (tsc) to compile the application and wait for changes. 
-    It also starts the lite-server and launches the browser to run the application.
+3) Luego: `npm start`
+    Lanza la aplicacion.
