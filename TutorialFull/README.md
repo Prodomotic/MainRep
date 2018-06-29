@@ -1,6 +1,8 @@
-# mdb-admin-template
+# MDB Vue (mdb-admin-template)
 
 > MDB Admin Dashboard
+
+Plantilla de panel de control MDB con Vue
 
 ## Build Setup
 
