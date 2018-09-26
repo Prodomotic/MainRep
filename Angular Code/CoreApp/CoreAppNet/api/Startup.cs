@@ -8,6 +8,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Swashbuckle.AspNetCore.Swagger;
+using System.IO;
+using System.Reflection;
 
 namespace CoreAppNet
 {
@@ -24,6 +27,33 @@ namespace CoreAppNet
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            // Register the Swagger generator, defining 1 or more Swagger documents
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info
+                {
+                  Title = "CoreApp API",
+                  Version = "v1",
+                  Description = "A simple example ASP.NET Core Web API",
+                  TermsOfService = "None",
+                  Contact = new Contact
+                  {
+                      Name = "GetDragon",
+                      Email = "getdragon@hotmail.com",
+                      Url = "https://twitter.com/getdragon"
+                  },
+                  License = new License
+                  {
+                      Name = "Use under LICX",
+                      Url = "https://example.com/license"
+                  }
+                });
+
+                // Set the comments path for the Swagger JSON and UI.
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -33,6 +63,17 @@ namespace CoreAppNet
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "CoreApp API V1");
+                c.RoutePrefix = string.Empty;
+            });
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
