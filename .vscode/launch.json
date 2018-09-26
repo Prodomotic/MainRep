@@ -9,9 +9,9 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/Angular Code/CoreApp/CoreAppNet/bin/Debug/netcoreapp2.0/CoreAppNet.dll",
+            "program": "${workspaceFolder}/Angular Code/CoreApp/CoreAppNet/api/bin/Debug/netcoreapp2.0/CoreAppNet.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/Angular Code/CoreApp/CoreAppNet",
+            "cwd": "${workspaceFolder}/Angular Code/CoreApp/CoreAppNet/api",
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart",
             "launchBrowser": {
